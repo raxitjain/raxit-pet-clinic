@@ -9,7 +9,6 @@ public class RaxitPetClinicApplication {
 
     public static void main(String[] args) {
         run(RaxitPetClinicApplication.class, args);
-        System.out.println("Hellloooo");
     }
 
 }
