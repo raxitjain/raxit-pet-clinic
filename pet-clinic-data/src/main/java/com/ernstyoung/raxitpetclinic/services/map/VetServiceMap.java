@@ -1,11 +1,11 @@
 package com.ernstyoung.raxitpetclinic.services.map;
 
 import com.ernstyoung.raxitpetclinic.model.Vet;
-import com.ernstyoung.raxitpetclinic.services.CrudService;
+import com.ernstyoung.raxitpetclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
