@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Raxit Pet Clinic - Our Vets</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <body>
     <div>
-        <h1 th:text="'List of Vets'"></h1>
-        <table>
+        <h1 th:text="'List of Veterinarians'"></h1>
+        <table id="vets" class="table table-striped">
             <thead>
             <tr>
                 <td>ID</td>
