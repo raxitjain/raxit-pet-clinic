@@ -11,4 +11,9 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping("/oups")
+    public String oups() {
+        return "notimplemented";
+    }
+
 }
