@@ -1,31 +1,31 @@
 package com.ernstyoung.raxitpetclinic.services.map;
 
-import com.ernstyoung.raxitpetclinic.model.PetType;
-import com.ernstyoung.raxitpetclinic.services.PetTypeService;
+import com.ernstyoung.raxitpetclinic.model.Specialty;
+import com.ernstyoung.raxitpetclinic.services.SpecialtiesService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetTypeServiceMap extends AbstractMapService<PetType, Long> implements PetTypeService {
+public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtiesService {
 
     @Override
-    public Set<PetType> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
     @Override
-    public PetType findById(Long id) {
+    public Specialty findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public PetType save(PetType object) {
+    public Specialty save(Specialty object) {
         return super.save(object);
     }
 
     @Override
-    public void delete(PetType object) {
+    public void delete(Specialty object) {
         super.delete(object);
     }
 
