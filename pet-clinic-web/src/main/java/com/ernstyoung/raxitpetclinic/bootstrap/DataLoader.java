@@ -1,10 +1,7 @@
 package com.ernstyoung.raxitpetclinic.bootstrap;
 
 import com.ernstyoung.raxitpetclinic.model.*;
-import com.ernstyoung.raxitpetclinic.services.OwnerService;
-import com.ernstyoung.raxitpetclinic.services.PetTypeService;
-import com.ernstyoung.raxitpetclinic.services.SpecialtiesService;
-import com.ernstyoung.raxitpetclinic.services.VetService;
+import com.ernstyoung.raxitpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtiesService specialtiesService;
+    private final VisitService visitService;
+    private final PetService petService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService, VisitService visitService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
+        this.petService = petService;
     }
 
     @Override
@@ -70,7 +71,13 @@ public class DataLoader implements CommandLineRunner {
         raxitsPet.setName("Fluffy");
         owner1.getPets().add(raxitsPet);
 
+        Visit fluffyVisit = new Visit();
+        fluffyVisit.setPet(raxitsPet);
+        fluffyVisit.setDescription("Bleeding gums");
+        fluffyVisit.setDate(LocalDate.now());
+
         ownerService.save(owner1);
+        visitService.save(fluffyVisit);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Michael");
