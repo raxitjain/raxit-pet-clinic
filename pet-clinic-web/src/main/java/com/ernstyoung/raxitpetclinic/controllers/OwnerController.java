@@ -43,11 +43,10 @@ public class OwnerController {
 
     @GetMapping("/find-owners")
     public String findOwnersForm(Owner owner, BindingResult result, Model model) {
-        System.out.println("kjjhvyjgjvuigygyvjvjhhjhjhjvhj");
         if (owner.getLastName() == null) {
             owner.setLastName("");
         }
-        List<Owner> owners = ownerService.findAllByLastNameLike(owner.getLastName());
+        List<Owner> owners = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
         if (owners.isEmpty()) {
             // No owner found
             result.rejectValue("lastName", "notFound", "Owner not found");
