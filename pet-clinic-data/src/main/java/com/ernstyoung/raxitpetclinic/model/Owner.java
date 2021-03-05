@@ -18,12 +18,15 @@ import java.util.Set;
 public class Owner extends Person {
 
     @Builder
-    public Owner(Long id, String firstName, String lastName, Set<Pet> pets, String address, String city, String telephone) {
+    public Owner(Long id, String firstName, String lastName, Set<Pet> pets, String address, String city,
+                 String telephone) {
         super(id, firstName, lastName);
-        this.pets = pets;
         this.address = address;
         this.city = city;
         this.telephone = telephone;
+        if (pets != null) {
+            this.pets = pets;
+        }
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
@@ -31,5 +34,23 @@ public class Owner extends Person {
     private String address;
     private String city;
     private String telephone;
+
+    public Pet getPet(String name) {
+        return getPet(name, false);
+    }
+
+    public Pet getPet(String name, boolean ignoreNow) {
+        name = name.toLowerCase();
+        for (Pet pet: pets) {
+            if (!ignoreNow || !pet.isNew()) {
+                String compName = pet.getName();
+                compName = compName.toLowerCase();
+                if (compName.equals(name)) {
+                    return pet;
+                }
+            }
+        }
+        return null;
+    }
 
 }
